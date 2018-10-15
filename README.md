@@ -1,8 +1,7 @@
 
-This is a set up so that we can easily create apps that use Django on the backend
-and React (set up with create-react-app) for the front end application.
+An Asyncronous Web Crawler Using Django(Backend) and React(Frontend).
 
-## Running
+#### Running Instructions
 docker-compose build
 
 docker-compose up
