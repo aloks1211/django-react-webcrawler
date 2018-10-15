@@ -34,7 +34,7 @@ class ImageFinder(UrlFinder):
                             final_image_links[url[1]]["depth"]= url[0]
                             final_image_links[url[1]]["urls"] = []
                             final_image_links[url[1]]["urls"].append(image_links)
-                self.redis.publish(final_image_links[url[1]])
+                #self.redis.publish(final_image_links[url[1]])
         await self.client_session.close()
         return final_image_links
 
