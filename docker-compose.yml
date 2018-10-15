@@ -8,7 +8,7 @@ services:
       - 'redis:/var/lib/redis/data'
     ports:
       - '6379:6379'
-  website:
+  django:
     build: ./djangocrawler
     command: python manage.py runserver 0.0.0.0:8000
     volumes:

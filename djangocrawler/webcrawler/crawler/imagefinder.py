@@ -23,7 +23,7 @@ class ImageFinder(UrlFinder):
                 html_text = await self._get_html(url[1])
                 if html_text:
                     doc_obj = html.fromstring(html_text)
-                    log.info ("no of images in url {0}:{1}".format(url,len(doc_obj.xpath('//img'))))
+                    # log.info ("no of images in url {0}:{1}".format(url,len(doc_obj.xpath('//img'))))
                     for image in doc_obj.cssselect('img'):
 
                         image_links = image.get('src')
