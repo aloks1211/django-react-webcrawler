@@ -13,3 +13,4 @@ redis==2.10.6
 requests==2.19.1
 ruamel.yaml==0.15.72
 yarl==1.2.6
+django-cors-headers==2.4.0
