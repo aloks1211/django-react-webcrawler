@@ -47,9 +47,13 @@ def _start_processing(seed_url="",depth=0):
     img = ImageFinder(seed_url, depth, loop)
     main_future = asyncio.Task(img.start_crawling(), loop=loop)
     loop.run_until_complete(main_future)
-    future = asyncio.Task(img.get_images(main_future.result()), loop=loop)
-    loop.run_until_complete(future)
-    loop.close()
-    result = future.result()
-    return result
+    try:
+        future = asyncio.Task(img.get_images(main_future.result()), loop=loop)
+        loop.run_until_complete(future)
+        loop.close()
+        result = future.result()
+        return result
+    except Exception as e:
+        log.error("Exception in future : {0}".format(e.__str__()))
+
 

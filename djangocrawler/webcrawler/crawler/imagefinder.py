@@ -25,7 +25,6 @@ class ImageFinder(UrlFinder):
                     doc_obj = html.fromstring(html_text)
                     # log.info ("no of images in url {0}:{1}".format(url,len(doc_obj.xpath('//img'))))
                     for image in doc_obj.cssselect('img'):
-
                         image_links = image.get('src')
                         if url[1] in final_image_links:
                             final_image_links[url[1]]["urls"].append(image_links)
