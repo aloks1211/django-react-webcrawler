@@ -2,14 +2,14 @@ import aiohttp
 from lxml import html
 from urllib.parse import urljoin, urlparse
 from djangocrawler.logger import log
-
+import ssl
 
 class UrlFinder(object):
     def __init__(self,seed_url,depth,loop):
         self.seed_url = seed_url
         self.depth = depth
         self.urls_traversed = set()
-        timeout = aiohttp.ClientTimeout(total=5*60)
+        timeout = aiohttp.ClientTimeout(total=10*60)
         self.client_session = aiohttp.ClientSession(timeout=timeout,loop=loop)
         self.domain_url ='{}://{}'.format(urlparse(self.seed_url).scheme, urlparse(self.seed_url).netloc)
 
@@ -20,8 +20,9 @@ class UrlFinder(object):
         :return:
         """
         try:
-            async with self.client_session.get(url) as response:
-                html_text = await response.text()
+            ssl_context = ssl.create_default_context()
+            async with self.client_session.get(url, ssl =False) as response:
+                html_text = await response.text(encoding="utf-8")
                 return html_text
         except Exception as e:
             log.exception (e.__str__())
