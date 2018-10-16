@@ -28,7 +28,7 @@ def crawl(request):
                              "message" : [e.__str__()],
                              "mandatory parameters" : {"seed_url" : "str",
                                                        "depth": "int"}}
-                    return JsonResponse(error,status=400)
+                    return JsonResponse(error,status=500)
 
         else:
             error = {"message": "Bad Request"}
