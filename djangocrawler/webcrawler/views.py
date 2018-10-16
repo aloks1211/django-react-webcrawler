@@ -14,7 +14,7 @@ def crawl(request):
         return response
 
     elif request.method == 'POST':
-        if request.META['CONTENT_TYPE'] == 'application/json' and request.body:
+        if request.content_type == 'application/json' and request.body:
                 try:
                     request_data = json.loads(request.body)
                     log.info(request_data)
